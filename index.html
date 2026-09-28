@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SANAD 1.0 - نظام رقمي مهني للمواكبة النفسية والاجتماعية والصحية في المؤسسات التعليمية المغربية" />
+    <meta name="theme-color" content="#155EEF" />
+    <title>SANAD 1.0 - نظام المواكبة النفسية والاجتماعية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Loading screen */
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        z-index: 9999;
+        transition: opacity 0.3s;
+      }
+      #loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loading-content {
+        text-align: center;
+      }
+      .loading-logo {
+        width: 60px;
+        height: 60px;
+        background: #155EEF;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        animation: pulse 2s infinite;
+      }
+      .loading-logo span {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .loading-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 4px;
+      }
+      .loading-subtitle {
+        font-size: 14px;
+        color: #6b7280;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div class="loading-content">
+        <div class="loading-logo">
+          <span>S</span>
+        </div>
+        <div class="loading-title">SANAD 1.0</div>
+        <div class="loading-subtitle">جاري التحميل...</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Hide loading screen after app loads
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+            setTimeout(function() {
+              loadingScreen.remove();
+            }, 300);
+          }
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
